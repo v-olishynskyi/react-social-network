@@ -13,6 +13,7 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { RegistrationParams } from '@api/services/Auth';
 import { useRegistration } from '@api/hooks/auth';
+import { Logo } from '@components';
 
 const Registration: React.FC = () => {
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ const Registration: React.FC = () => {
 
   const onSubmit = async (data: RegistrationParams) => {
     await registration(data);
+    reset();
+    goToLogin();
   };
 
   const goToLogin = () => navigate('/login');
@@ -56,121 +59,113 @@ const Registration: React.FC = () => {
   if (isAuthenticated) return <Navigate to={state?.from ?? '/'} />;
 
   return (
-    <div className='registration-container auth'>
-      <div className='registration-inputs-container'>
-        <Card title='Реєстрація'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='registration-input'>
-              <div className='registration-input'>
-                <Controller
-                  name='first_name'
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <div className='p-fluid'>
-                      <label
-                        htmlFor={field.name}
-                        className={classNames({
-                          'p-error': fieldState.error,
-                        })}
-                      />
-                      <span className='p-float-label'>
-                        <InputText
-                          {...field}
-                          className={classNames({
-                            'p-invalid': fieldState.error,
-                          })}
-                        />
-                        <label htmlFor={field.name}>Імʼя</label>
-                      </span>
-                      {getFormErrorMessage(field.name)}
-                    </div>
-                  )}
-                />
-              </div>
-              <div className='registration-input'>
-                <Controller
-                  name='last_name'
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <div className='p-fluid'>
-                      <label
-                        htmlFor={field.name}
-                        className={classNames({
-                          'p-error': fieldState.error,
-                        })}
-                      />
-                      <span className='p-float-label'>
-                        <InputText
-                          {...field}
-                          className={classNames({
-                            'p-invalid': fieldState.error,
-                          })}
-                        />
-                        <label htmlFor={field.name}>Прізвище</label>
-                      </span>
-                      {getFormErrorMessage(field.name)}
-                    </div>
-                  )}
-                />
-              </div>
-              <div className='registration-input'>
-                <Controller
-                  name='email'
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <div className='p-fluid'>
-                      <label
-                        htmlFor={field.name}
-                        className={classNames({
-                          'p-error': fieldState.error,
-                        })}
-                      />
-                      <span className='p-float-label'>
-                        <InputText
-                          {...field}
-                          className={classNames({
-                            'p-invalid': fieldState.error,
-                          })}
-                        />
-                        <label htmlFor={field.name}>E-mail</label>
-                      </span>
-                      {getFormErrorMessage(field.name)}
-                    </div>
-                  )}
-                />
-              </div>
-              <div className='registration-input'>
-                <Controller
-                  name='password'
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <div className='p-fluid'>
-                      <label
-                        htmlFor={field.name}
-                        className={classNames({
-                          'p-error': fieldState.error,
-                        })}
-                      />
-                      <span className='p-float-label'>
-                        <Password
-                          {...field}
-                          feedback={false}
-                          className={classNames({
-                            'p-invalid': fieldState.error,
-                          })}
-                        />
-                        <label htmlFor={field.name}>Пароль</label>
-                      </span>
-                      {getFormErrorMessage(field.name)}
-                    </div>
-                  )}
-                />
-              </div>
+    <div className='auth-wrapper auth'>
+      <header className='auth-header'>
+        <Logo />
+      </header>
+      <main className='auth-main'>
+        <h1 className='title'>Реєстрація</h1>
+        <div className='auth-form-wrapper'>
+          <Card>
+            <div className='social-auth-wrapper'>
+              <Button
+                disabled
+                label='Log in with Google'
+                severity='secondary'
+                icon='pi pi-google'
+              />
+              <Button
+                disabled
+                label='Log in with Apple'
+                severity='secondary'
+                icon='pi pi-apple'
+              />
+            </div>
+            <div className='or-divider'>
+              <div className='divider' />
+              <span>OR</span>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Controller
-                name='confirm_password'
+                name='first_name'
                 control={control}
                 render={({ field, fieldState }) => (
-                  <div className='p-fluid'>
+                  <div className='p-fluid input'>
+                    <label
+                      htmlFor={field.name}
+                      className={classNames({
+                        'p-error': fieldState.error,
+                      })}
+                    />
+                    <span className='p-float-label'>
+                      <InputText
+                        {...field}
+                        className={classNames({
+                          'p-invalid': fieldState.error,
+                        })}
+                      />
+                      <label htmlFor={field.name}>Імʼя</label>
+                    </span>
+                    {getFormErrorMessage(field.name)}
+                  </div>
+                )}
+              />
+
+              <Controller
+                name='last_name'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <div className='p-fluid input'>
+                    <label
+                      htmlFor={field.name}
+                      className={classNames({
+                        'p-error': fieldState.error,
+                      })}
+                    />
+                    <span className='p-float-label'>
+                      <InputText
+                        {...field}
+                        className={classNames({
+                          'p-invalid': fieldState.error,
+                        })}
+                      />
+                      <label htmlFor={field.name}>Прізвище</label>
+                    </span>
+                    {getFormErrorMessage(field.name)}
+                  </div>
+                )}
+              />
+              <Controller
+                name='email'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <div className='p-fluid input'>
+                    <label
+                      htmlFor={field.name}
+                      className={classNames({
+                        'p-error': fieldState.error,
+                      })}
+                    />
+                    <span className='p-float-label'>
+                      <InputText
+                        {...field}
+                        className={classNames({
+                          'p-invalid': fieldState.error,
+                        })}
+                      />
+                      <label htmlFor={field.name}>E-mail</label>
+                    </span>
+                    {getFormErrorMessage(field.name)}
+                  </div>
+                )}
+              />
+
+              <Controller
+                name='password'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <div className='p-fluid input'>
                     <label
                       htmlFor={field.name}
                       className={classNames({
@@ -180,6 +175,34 @@ const Registration: React.FC = () => {
                     <span className='p-float-label'>
                       <Password
                         {...field}
+                        toggleMask
+                        feedback={false}
+                        className={classNames({
+                          'p-invalid': fieldState.error,
+                        })}
+                      />
+                      <label htmlFor={field.name}>Пароль</label>
+                    </span>
+                    {getFormErrorMessage(field.name)}
+                  </div>
+                )}
+              />
+
+              <Controller
+                name='confirm_password'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <div className='p-fluid input'>
+                    <label
+                      htmlFor={field.name}
+                      className={classNames({
+                        'p-error': fieldState.error,
+                      })}
+                    />
+                    <span className='p-float-label'>
+                      <Password
+                        {...field}
+                        toggleMask
                         feedback={false}
                         className={classNames({
                           'p-invalid': fieldState.error,
@@ -191,16 +214,29 @@ const Registration: React.FC = () => {
                   </div>
                 )}
               />
+
+              <div className='button-wrapper'>
+                <Button
+                  type='submit'
+                  icon='pi pi-check'
+                  disabled={isLoading}
+                  loading={isLoading}>
+                  Увійти
+                </Button>
+              </div>
+            </form>
+
+            <div className='button-wrapper'>
+              <Button
+                label={`Вже маєте аккаунт? Увійти`}
+                link
+                type='button'
+                onClick={goToLogin}
+              />
             </div>
-
-            <Button type='submit' disabled={isLoading} loading={isLoading}>
-              Підтвердити
-            </Button>
-          </form>
-
-          <Button label='Вже маєте аккаунт? Увійти' link onClick={goToLogin} />
-        </Card>
-      </div>
+          </Card>
+        </div>
+      </main>
     </div>
   );
 };

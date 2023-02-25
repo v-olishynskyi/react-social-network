@@ -9,7 +9,13 @@ export const useRegistration = () => {
 
   return useMutation<User, ApiError, RegistrationParams>({
     mutationFn: registration,
-    onSuccess: response => {},
+    onSuccess: response => {
+      showToast({
+        severity: 'success',
+        summary: 'Успіх',
+        detail: 'Реєстрація успішна',
+      });
+    },
     onError: error => {
       showToast({
         severity: 'error',

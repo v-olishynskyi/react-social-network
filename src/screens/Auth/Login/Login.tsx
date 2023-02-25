@@ -14,6 +14,7 @@ import { classNames } from 'primereact/utils';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { isAuthenticatedSelector } from '@store/auth';
+import { Logo } from '@components';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -61,46 +62,44 @@ const Login = () => {
   };
 
   const goToRegistration = () => navigate('/registration');
+  const goToForgotPassword = () => navigate('/forgot-password');
 
   if (isAuthenticated) return <Navigate to={state?.from ?? '/'} />;
 
   return (
-    <div className='auth-container auth'>
-      <div className='auth-inputs-container'>
-        <Card title='Авторизація'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='auth-input'>
-              <div className='auth-input'>
-                <Controller
-                  name='email'
-                  control={control}
-                  render={({ field, fieldState }) => (
-                    <div className='p-fluid'>
-                      <label
-                        htmlFor={field.name}
-                        className={classNames({
-                          'p-error': fieldState.error,
-                        })}
-                      />
-                      <span className='p-float-label'>
-                        <InputText
-                          {...field}
-                          className={classNames({
-                            'p-invalid': fieldState.error,
-                          })}
-                        />
-                        <label htmlFor={field.name}>E-mail</label>
-                      </span>
-                      {getFormErrorMessage(field.name)}
-                    </div>
-                  )}
-                />
-              </div>
+    <div className='auth-wrapper auth'>
+      <header className='auth-header'>
+        <Logo />
+      </header>
+      <main className='auth-main'>
+        <h1 className='title'>Авторизація</h1>
+        <div className='auth-form-wrapper'>
+          <Card>
+            <div className='social-auth-wrapper'>
+              <Button
+                disabled
+                label='Log in with Google'
+                severity='secondary'
+                icon='pi pi-google'
+              />
+              <Button
+                disabled
+                label='Log in with Apple'
+                severity='secondary'
+                icon='pi pi-apple'
+              />
+            </div>
+            <div className='or-divider'>
+              <div className='divider' />
+              <span>OR</span>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Controller
-                name='password'
+                name='email'
                 control={control}
                 render={({ field, fieldState }) => (
-                  <div className='p-fluid'>
+                  <div className='p-fluid input'>
                     <label
                       htmlFor={field.name}
                       className={classNames({
@@ -108,35 +107,78 @@ const Login = () => {
                       })}
                     />
                     <span className='p-float-label'>
-                      <Password {...field} feedback={false} />
+                      <InputText
+                        {...field}
+                        className={classNames({
+                          'p-invalid': fieldState.error,
+                        })}
+                      />
+                      <label htmlFor={field.name}>E-mail</label>
+                    </span>
+                    {getFormErrorMessage(field.name)}
+                  </div>
+                )}
+              />
+              <Controller
+                name='password'
+                control={control}
+                render={({ field, fieldState }) => (
+                  <div className='p-fluid '>
+                    <label
+                      htmlFor={field.name}
+                      className={classNames({
+                        'p-error': fieldState.error,
+                      })}
+                    />
+                    <span className='p-float-label'>
+                      <Password {...field} toggleMask feedback={false} />
                       <label htmlFor={field.name}>Password</label>
                     </span>
                     {getFormErrorMessage(field.name)}
                   </div>
                 )}
               />
-            </div>
-            {/* <div className='auth-input w-100'>
-              <Checkbox
-                id='rememberMe'
-                checked={isRememberMe}
-                onChange={toggleIsRememberMe}
+              <div className='form-remember-wrapper'>
+                <div>
+                  <Checkbox
+                    inputId='rememberMe'
+                    checked={isRememberMe}
+                    onChange={toggleIsRememberMe}
+                  />
+                  <label htmlFor='rememberMe' className='ml-2 '>
+                    Запамʼятати мене
+                  </label>
+                </div>
+                <div>
+                  <Button
+                    label='Забули пароль?'
+                    link
+                    type='button'
+                    onClick={goToForgotPassword}
+                  />
+                </div>
+              </div>
+              <div className='button-wrapper'>
+                <Button
+                  type='submit'
+                  icon='pi pi-check'
+                  disabled={isLoading}
+                  loading={isLoading}>
+                  Увійти
+                </Button>
+              </div>
+            </form>
+            <div className='button-wrapper'>
+              <Button
+                label={`Ще не маєте аккаунту?\nЗареєструватися`}
+                link
+                type='button'
+                onClick={goToRegistration}
               />
-              <label htmlFor='rememberMe' className='ml-2 '>
-                Запамʼятати мене
-              </label>
-            </div> */}
-            <Button type='submit' disabled={isLoading} loading={isLoading}>
-              Увійти
-            </Button>
-          </form>
-          <Button
-            label='Ще не маєте аккаунту? Зареєструватися'
-            link
-            onClick={goToRegistration}
-          />
-        </Card>
-      </div>
+            </div>
+          </Card>
+        </div>
+      </main>
     </div>
   );
 };

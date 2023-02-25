@@ -1,13 +1,12 @@
 import { LoginParams, RegistrationParams } from './types';
 import { wait } from '@utils/helpers';
-import { User } from '@utils/types';
 // @ts-ignore
 import sign from 'jwt-encode';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import usersAtom from '@store/users';
 
 const useAuthService = () => {
-  const users = useRecoilValue(usersAtom);
+  const [users, setUsers] = useRecoilState(usersAtom);
 
   const methods = {
     login: async ({ email, password, isRememberMe }: LoginParams) => {
@@ -69,7 +68,7 @@ const useAuthService = () => {
         first_name,
       };
 
-      users.push(user);
+      setUsers(oldUsers => [...oldUsers, user]);
 
       return Promise.resolve(user);
     },
