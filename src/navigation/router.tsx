@@ -1,5 +1,5 @@
 import { AppLayout } from '@components';
-import { Login, Registration } from '@screens';
+import { Login, Profile, Registration } from '@screens';
 import { isAuthenticatedSelector } from '@store/auth';
 import { createBrowserRouter, Navigate, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -35,8 +35,28 @@ const useRouter = () => {
       ),
       children: [
         {
+          path: '/',
+          element: <Navigate to={'/feeds'} />,
+        },
+        {
+          path: '/feeds',
+          element: <div>feeds</div>,
+        },
+        {
+          path: '/community',
+          element: <div>community</div>,
+        },
+        {
+          path: '/messages',
+          element: <div>MESSAGES</div>,
+        },
+        {
+          path: '/settings',
+          element: <div>settings</div>,
+        },
+        {
           path: '/profile/:id',
-          element: <div>profile</div>,
+          element: <Profile />,
         },
       ],
     },

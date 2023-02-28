@@ -1,17 +1,27 @@
 export type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
+// export interface User {
+//   id: number;
+//   fullname: string;
+//   first_name: string;
+//   last_name: string;
+//   username?: string;
+//   email: string;
+//   address?: Address;
+//   phone?: string;
+//   website?: string;
+//   company?: Company;
+//   avatar?: string;
+// }
+
 export interface User {
-  id: number;
-  fullname: string;
+  uid: string;
+  email: string;
   first_name: string;
   last_name: string;
-  username?: string;
-  email: string;
-  address?: Address;
-  phone?: string;
-  website?: string;
-  company?: Company;
-  avatar?: string;
+  authProvider: string;
+  avatar: string;
+  fullname: string;
 }
 
 export interface Address {

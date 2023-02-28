@@ -1,4 +1,1 @@
-
-export type LogoProps = {
-  
-}
+export type LogoProps = {};

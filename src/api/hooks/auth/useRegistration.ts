@@ -1,22 +1,22 @@
 import useAuthService, { RegistrationParams } from '@api/services/Auth';
 import { useToastContext } from '@context';
 import { useMutation } from '@tanstack/react-query';
-import { ApiError, User } from '@utils/types';
+import { ApiError } from '@utils/types';
 
 export const useRegistration = () => {
   const { showToast } = useToastContext();
   const { registration } = useAuthService();
 
-  return useMutation<User, ApiError, RegistrationParams>({
+  return useMutation<boolean, ApiError, RegistrationParams>({
     mutationFn: registration,
-    onSuccess: response => {
+    onSuccess: () => {
       showToast({
         severity: 'success',
         summary: 'Успіх',
         detail: 'Реєстрація успішна',
       });
     },
-    onError: error => {
+    onError: (error: any) => {
       showToast({
         severity: 'error',
         summary: 'Щось пішло не так',

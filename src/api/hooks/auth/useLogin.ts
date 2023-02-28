@@ -18,7 +18,7 @@ export const useLogin = () => {
     onSuccess: response => {
       setAuth(response);
     },
-    onError: error => {
+    onError: (error: any) => {
       showToast({
         severity: 'error',
         summary: 'Щось пішло не так',

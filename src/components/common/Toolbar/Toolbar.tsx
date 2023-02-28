@@ -1,46 +1,53 @@
 import React from 'react';
-import { Toolbar as PrimereactToolbar } from 'primereact/toolbar';
-import { Button } from 'primereact/button';
-import { useLogout } from '@api/hooks/auth';
-import { Avatar } from '@components/common';
+import { Avatar, Logo } from '@components';
 import { useRecoilValue } from 'recoil';
 import { userSelector } from '@store/auth';
 import './styles.scss';
+import { useMediaQuery } from 'react-responsive';
+import { InputText } from 'primereact/inputtext';
 
 const Toolbar: React.FC = () => {
-  const { mutate: logout, isLoading } = useLogout();
+  const user = useRecoilValue(userSelector)!;
 
-  const user = useRecoilValue(userSelector);
+  const isTablet = useMediaQuery({
+    maxWidth: 768,
+  });
 
-  const logo = (
-    <div className='site-logo-container'>
-      <div className='site-logo'>React Social Network</div>
-      <div>Just for fun</div>
+  // const isMobile = useMediaQuery({
+  //   maxWidth: 576,
+  // });
+
+  const isDesktop = useMediaQuery({
+    minWidth: 1200,
+  });
+
+  const avatarSection = (
+    <div className='flex flex-row items-center'>
+      {!isTablet && <div className='name mr-4'>{user.fullname}</div>}
+      <Avatar
+        user={{
+          ...user,
+          avatar: user.avatar,
+        }}
+        isGoToProfile={false}
+      />
     </div>
   );
 
   return (
     <>
-      <PrimereactToolbar
-        start={<>{logo}</>}
-        end={
-          <>
-            {/* <Button
-              onClick={() => logout()}
-              loading={isLoading}
-              disabled={isLoading}>
-              Вийти
-            </Button> */}
-            <Avatar
-              user={{
-                ...user,
-                avatar: 'https://pixlr.com/images/index/remove-bg.webp',
-              }}
-              isGoToProfile={false}
-            />
-          </>
-        }
-      />
+      <div className='navbar-wrapper'>
+        <div className='flex flex-row items-center'>
+          <div style={{ marginRight: isDesktop ? 40 : 24 }}>
+            <Logo />
+          </div>
+          <span className='p-input-icon-left'>
+            <i className='pi pi-search' />
+            <InputText placeholder='Search' className='search-bar' />
+          </span>
+        </div>
+        {avatarSection}
+      </div>
     </>
   );
 };

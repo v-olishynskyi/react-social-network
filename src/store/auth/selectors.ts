@@ -13,7 +13,7 @@ const userSelector = selector({
   get: ({ get }) => {
     const userFromAtom = get(authAtom).user;
 
-    return userFromAtom;
+    return userFromAtom || null;
   },
 });
 

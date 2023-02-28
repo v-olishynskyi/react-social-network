@@ -13,8 +13,11 @@ import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastContextProvider } from '@context';
 import { App } from '@screens';
+import PrimeReact from 'primereact/api';
 
 const queryClient = new QueryClient();
+
+PrimeReact.ripple = true;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

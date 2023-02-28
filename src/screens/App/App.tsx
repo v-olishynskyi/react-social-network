@@ -1,12 +1,11 @@
 import React from 'react';
-import { useSetMockUsers } from '@utils/hooks';
 import { RouterProvider } from 'react-router-dom';
 import { useRouter } from '@navigation';
 import { DebugObserver } from '@services';
+import { useRefreshProfile } from '@api/hooks/profile';
 
 function App() {
-  useSetMockUsers();
-
+  useRefreshProfile();
   const router = useRouter();
 
   return (

@@ -1,5 +1,4 @@
 import { IAuth } from './types';
-import { User } from '@utils/types';
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
@@ -7,10 +6,10 @@ const { persistAtom } = recoilPersist();
 
 const initialState: IAuth = {
   token: null,
-  user: {} as User,
+  user: null,
 };
 
-const authAtom = atom({
+const authAtom = atom<IAuth>({
   key: 'auth',
   default: initialState,
   effects_UNSTABLE: [persistAtom],
