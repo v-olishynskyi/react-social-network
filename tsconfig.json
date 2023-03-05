@@ -24,6 +24,7 @@
       "@components/*": ["./components/*"],
       "@utils/*": ["./utils/*"],
       "@hooks": ["./utils/hooks"],
+      "@theme": ["./utils/theme"],
       "@screens": ["./screens"],
       "@screens/*": ["./screens/*"],
       "@mock": ["./mock"],

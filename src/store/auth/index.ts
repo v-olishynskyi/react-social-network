@@ -1,3 +1,5 @@
-export { default } from './atom';
+import { authAtom } from './atom';
+
+export default authAtom;
 export * from './types';
 export * from './selectors';

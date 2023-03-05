@@ -1,0 +1,21 @@
+.light-theme {
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --primary-bg: rgb(255, 255, 255);
+  --secondary-bg: rgb(249, 250, 251);
+  --primary-text: rgb(77, 93, 120);
+  --secondary-text: rgb(148, 158, 173);
+  --primary-blue: rgb(55, 125, 254);
+  --gray: rgb(220, 223, 228);
+}
+
+.dark-theme {
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --primary-bg: rgb(24, 28, 32);
+  --secondary-bg: rgb(33, 40, 51);
+  --primary-text: rgb(238, 239, 242);
+  --secondary-text: rgb(148, 158, 173);
+  --primary-blue: rgb(55, 125, 254);
+  --gray: rgb(220, 223, 228);
+}

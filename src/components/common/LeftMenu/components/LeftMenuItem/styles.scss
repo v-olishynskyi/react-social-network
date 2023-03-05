@@ -5,16 +5,16 @@
   margin-bottom: 8px;
   cursor: pointer;
 
-  color: black;
-  font-size: 24px;
-  font-weight: 700px;
+  color: var(--primary-text);
+  font-size: 20px;
+  font-weight: 500;
 
   .menu-icon {
     margin-right: 8px;
   }
 
   &.active {
-    background-color: rgb(77, 93, 120);
-    color: white;
+    background-color: var(--primary-text);
+    color: var(--white);
   }
 }

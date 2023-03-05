@@ -15,6 +15,7 @@ const Avatar: React.FC<AvatarProps> = ({
   shape = 'circle',
   size = 'xlarge',
   isGoToProfile = true,
+  withMenu,
   ...rest
 }) => {
   const navigate = useNavigate();
@@ -61,29 +62,31 @@ const Avatar: React.FC<AvatarProps> = ({
           className={classNames('avatar', { 'p-overlay-badge': withBadge })}>
           {badge !== undefined && <Badge value={badge} />}
         </PrimereactAvatar>
-        <i className='pi pi-chevron-down' />
+        {withMenu && <i className='pi pi-chevron-down chevron' />}
       </div>
-      <OverlayPanel ref={overlayPanelRef}>
-        <div className='overlay-menu-wrapper'>
-          <Button
-            onClick={goToProfile}
-            loading={isLoading}
-            disabled={isLoading}
-            className='menu-button'
-            icon='pi pi-user'
-            severity='info'>
-            Профіль
-          </Button>
-          <Button
-            onClick={onLogout}
-            loading={isLoading}
-            disabled={isLoading}
-            icon='pi pi-sign-out'
-            severity='danger'>
-            Вийти
-          </Button>
-        </div>
-      </OverlayPanel>
+      {withMenu && (
+        <OverlayPanel ref={overlayPanelRef}>
+          <div className='overlay-menu-wrapper'>
+            <Button
+              onClick={goToProfile}
+              loading={isLoading}
+              disabled={isLoading}
+              className='menu-button'
+              icon='pi pi-user'
+              severity='info'>
+              Профіль
+            </Button>
+            <Button
+              onClick={onLogout}
+              loading={isLoading}
+              disabled={isLoading}
+              icon='pi pi-sign-out'
+              severity='danger'>
+              Вийти
+            </Button>
+          </div>
+        </OverlayPanel>
+      )}
     </>
   );
 };

@@ -1,5 +1,13 @@
 import { AppLayout } from '@components';
-import { Login, Profile, Registration } from '@screens';
+import {
+  Community,
+  Feeds,
+  Login,
+  Messages,
+  Profile,
+  Registration,
+  Settings,
+} from '@screens';
 import { isAuthenticatedSelector } from '@store/auth';
 import { createBrowserRouter, Navigate, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -40,19 +48,27 @@ const useRouter = () => {
         },
         {
           path: '/feeds',
-          element: <div>feeds</div>,
+          element: <Feeds />,
         },
         {
           path: '/community',
-          element: <div>community</div>,
+          element: <Community />,
         },
         {
           path: '/messages',
-          element: <div>MESSAGES</div>,
+          element: <Messages />,
         },
         {
           path: '/settings',
-          element: <div>settings</div>,
+          element: <Settings />,
+          children: [
+            { path: 'language', element: <div>language</div> },
+            { path: 'blocking', element: <div>blocking</div> },
+            { path: 'notifications', element: <div>notifications</div> },
+            { path: 'security', element: <div>security</div> },
+            { path: 'activity-log', element: <div>activity-log</div> },
+            { path: 'viewing', element: <div>viewing</div> },
+          ],
         },
         {
           path: '/profile/:id',

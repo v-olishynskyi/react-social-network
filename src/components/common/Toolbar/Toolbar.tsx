@@ -30,6 +30,7 @@ const Toolbar: React.FC = () => {
           avatar: user.avatar,
         }}
         isGoToProfile={false}
+        withMenu
       />
     </div>
   );

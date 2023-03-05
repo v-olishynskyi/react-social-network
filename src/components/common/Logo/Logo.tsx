@@ -2,7 +2,7 @@ import React from 'react';
 import { LogoProps } from './types';
 import './styles.scss';
 import { useMediaQuery } from 'react-responsive';
-import logo from '@assets/logo-64.png';
+import logo from '@assets/images/logo-64.png';
 import { useNavigate } from 'react-router-dom';
 import { classNames } from 'primereact/utils';
 

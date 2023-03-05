@@ -9,10 +9,8 @@ const initialState: IAuth = {
   user: null,
 };
 
-const authAtom = atom<IAuth>({
+export const authAtom = atom<IAuth>({
   key: 'auth',
   default: initialState,
   effects_UNSTABLE: [persistAtom],
 });
-
-export default authAtom;

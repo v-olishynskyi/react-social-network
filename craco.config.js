@@ -8,6 +8,7 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@hooks': path.resolve(__dirname, 'src/utils/hooks'),
+      '@theme': path.resolve(__dirname, 'src/utils/theme'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@screens': path.resolve(__dirname, 'src/screens'),
       '@mock': path.resolve(__dirname, 'src/mock'),
