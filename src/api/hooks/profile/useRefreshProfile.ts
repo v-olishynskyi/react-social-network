@@ -15,7 +15,7 @@ export const useRefreshProfile = () => {
   return useQuery<IUserResponse, ApiError>({
     queryKey,
     queryFn: () => refreshProfile(authState.user!.uid),
-    enabled: !!authState.user!.uid,
+    enabled: !!authState.user?.uid,
     onSuccess: response => {
       setAuthState(prev => ({ ...prev, user: response }));
     },

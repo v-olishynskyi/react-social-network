@@ -5,8 +5,11 @@ import { userSelector } from '@store/auth';
 import './styles.scss';
 import { useMediaQuery } from 'react-responsive';
 import { InputText } from 'primereact/inputtext';
+import { useTheme } from '@utils/theme';
 
 const Toolbar: React.FC = () => {
+  const { colors } = useTheme();
+
   const user = useRecoilValue(userSelector)!;
 
   const isTablet = useMediaQuery({
@@ -44,7 +47,14 @@ const Toolbar: React.FC = () => {
           </div>
           <span className='p-input-icon-left'>
             <i className='pi pi-search' />
-            <InputText placeholder='Search' className='search-bar' />
+            <InputText
+              placeholder='Search'
+              className='search-bar'
+              style={{
+                backgroundColor: colors.primaryBg,
+                color: colors.primaryText,
+              }}
+            />
           </span>
         </div>
         {avatarSection}

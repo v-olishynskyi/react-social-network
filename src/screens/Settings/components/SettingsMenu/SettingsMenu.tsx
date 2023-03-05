@@ -6,6 +6,7 @@ import {
   ClockIcon,
   EyeIcon,
   LanguageIcon,
+  LightIcon,
   NoIcon,
   NotificationIcon,
   SecurityIcon,
@@ -43,6 +44,11 @@ const routes = [
     label: 'Viewing & Sharing',
     route: '/settings/viewing',
   },
+  {
+    icon: <LightIcon />,
+    label: 'Theme',
+    route: '/settings/theme',
+  },
 ];
 
 const SettingsMenu: React.FC<SettingsMenuProps> = () => {
@@ -57,6 +63,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = () => {
 
             return (
               <SettingsMenuItem
+                key={item.label}
                 icon={item.icon}
                 label={item.label}
                 route={item.route}

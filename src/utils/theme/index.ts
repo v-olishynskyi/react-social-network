@@ -5,5 +5,5 @@ import { useRecoilValue } from 'recoil';
 export const useTheme = () => {
   const theme = useRecoilValue(themeSelector);
 
-  return { colors: colors[theme] };
+  return { colors: colors[theme ?? 'light'] };
 };

@@ -8,6 +8,7 @@ import { OverlayPanel } from 'primereact/overlaypanel';
 import { useNavigate } from 'react-router-dom';
 import { useLogout } from '@api/hooks/auth';
 import { Button } from 'primereact/button';
+import { useTheme } from '@utils/theme';
 
 const Avatar: React.FC<AvatarProps> = ({
   user,
@@ -18,6 +19,8 @@ const Avatar: React.FC<AvatarProps> = ({
   withMenu,
   ...rest
 }) => {
+  const { colors } = useTheme();
+
   const navigate = useNavigate();
 
   const { mutate: logout, isLoading } = useLogout();

@@ -8,6 +8,7 @@ export const colors = {
     secondaryText: '#949EAD',
     primaryBlue: '#377DFE',
     gray: '#DCDFE4',
+    leftMenuActive: '#4D5D78',
   },
   light: {
     white: '#FFFFFF',
@@ -18,5 +19,6 @@ export const colors = {
     secondaryText: '#949EAD',
     primaryBlue: '#377DFE',
     gray: '#DCDFE4',
+    leftMenuActive: '#4D5D78',
   },
 };

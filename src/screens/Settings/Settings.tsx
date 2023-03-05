@@ -9,7 +9,7 @@ const Settings: React.FC = () => {
       <div className='settings-content'>
         <div className='flex flex-row h-full'>
           <SettingsMenu />
-          <div>
+          <div className='p-8 w-full'>
             <Outlet />
           </div>
         </div>

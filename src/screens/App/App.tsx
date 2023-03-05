@@ -6,6 +6,7 @@ import { useRefreshProfile } from '@api/hooks/profile';
 import { useRecoilValue } from 'recoil';
 import { themeSelector } from '@store/ui/selectors';
 import '@utils/variables.css';
+import './styles.scss';
 
 function App() {
   useRefreshProfile();
@@ -13,9 +14,9 @@ function App() {
   const theme = useRecoilValue(themeSelector);
 
   return (
-    <div className={`${theme}-theme`}>
+    <div className={`${theme}-theme app`}>
       <React.StrictMode>
-        <DebugObserver />
+        {/* <DebugObserver /> */}
         <RouterProvider router={router} />
       </React.StrictMode>
     </div>

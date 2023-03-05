@@ -6,3 +6,5 @@ export * from './NotificationIcon';
 export * from './EyeIcon';
 export * from './SecurityIcon';
 export * from './ClockIcon';
+export * from './LightIcon';
+export * from './MoonIcon';

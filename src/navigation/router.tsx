@@ -7,6 +7,7 @@ import {
   Profile,
   Registration,
   Settings,
+  ThemeSettings,
 } from '@screens';
 import { isAuthenticatedSelector } from '@store/auth';
 import { createBrowserRouter, Navigate, useLocation } from 'react-router-dom';
@@ -68,6 +69,7 @@ const useRouter = () => {
             { path: 'security', element: <div>security</div> },
             { path: 'activity-log', element: <div>activity-log</div> },
             { path: 'viewing', element: <div>viewing</div> },
+            { path: 'theme', element: <ThemeSettings /> },
           ],
         },
         {
