@@ -1,0 +1,24 @@
+.overlay-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .menu-button {
+    margin-bottom: 1rem;
+  }
+}
+
+.user-avatar-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .avatar {
+    background-color: var(--left-menu-active);
+    color: var(--white);
+  }
+
+  .chevron {
+    color: var(--primary-text);
+    margin-left: 1rem;
+  }
+}

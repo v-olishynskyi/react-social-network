@@ -1,0 +1,16 @@
+.user-card-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .user-fullname {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--secondary-text);
+  }
+}

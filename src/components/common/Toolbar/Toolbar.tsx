@@ -6,6 +6,7 @@ import './styles.scss';
 import { useMediaQuery } from 'react-responsive';
 import { InputText } from 'primereact/inputtext';
 import { useTheme } from '@utils/theme';
+import { UserAvatar } from './components';
 
 const Toolbar: React.FC = () => {
   const { colors } = useTheme();
@@ -27,14 +28,7 @@ const Toolbar: React.FC = () => {
   const avatarSection = (
     <div className='flex flex-row items-center'>
       {!isTablet && <div className='name mr-4'>{user.fullname}</div>}
-      <Avatar
-        user={{
-          ...user,
-          avatar: user.avatar,
-        }}
-        isGoToProfile={false}
-        withMenu
-      />
+      <UserAvatar />
     </div>
   );
 
