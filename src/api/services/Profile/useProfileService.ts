@@ -1,6 +1,6 @@
-import useUsersService from '@api/services/Users/useUsersService';
+import useUsersService from '@api/services/Users';
 
-const useProfileService = () => {
+export const useProfileService = () => {
   const { getUser } = useUsersService();
 
   const methods = {
@@ -11,5 +11,3 @@ const useProfileService = () => {
 
   return methods;
 };
-
-export default useProfileService;

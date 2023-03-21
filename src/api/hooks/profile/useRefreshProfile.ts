@@ -17,7 +17,7 @@ export const useRefreshProfile = () => {
     queryFn: () => refreshProfile(authState.user!.uid),
     enabled: !!authState.user?.uid,
     onSuccess: response => {
-      setAuthState(prev => ({ ...prev, user: response }));
+      // setAuthState(prev => ({ ...prev, user: response }));
     },
     onError: error => {
       showToast({

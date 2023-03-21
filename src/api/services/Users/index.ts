@@ -1,2 +1,4 @@
-export { default } from './useUsersService';
+import { useUsersService } from './useUsersService';
+
+export default useUsersService;
 export * from './types';

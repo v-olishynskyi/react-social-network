@@ -1,28 +1,21 @@
 import { firebaseDB } from '@services';
 import { User } from '@utils/types';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
-const useUsersService = () => {
+export const useUsersService = () => {
   const methods = {
-    getUserSnapshot: async (uid: string) => {
-      try {
-        const q = query(
-          collection(firebaseDB, 'users'),
-          where('uid', '==', uid)
-        );
-        const docs = await getDocs(q);
-
-        return Promise.resolve(docs.docs[0]);
-      } catch (error) {
-        return Promise.reject(error);
-      }
-    },
     getUser: async (uid: string) => {
       try {
-        const snapshot = await methods.getUserSnapshot(uid);
-        const userData = snapshot.data() as User;
+        const userDoc = await getDoc(doc(firebaseDB, 'users', uid));
 
-        return Promise.resolve(userData);
+        if (!userDoc.exists()) {
+          return Promise.reject({
+            code: 404,
+            message: 'Користувач не знайдений',
+          });
+        }
+
+        return Promise.resolve(userDoc.data() as User);
       } catch (error) {
         return Promise.reject(error);
       }
@@ -31,5 +24,3 @@ const useUsersService = () => {
 
   return methods;
 };
-
-export default useUsersService;

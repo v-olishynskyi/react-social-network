@@ -1,15 +1,13 @@
-import { IUi } from './types';
+import { IPosts } from './types';
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist();
 
-const initialValue: IUi = {
-  theme: 'light',
-};
+const initialState: IPosts = [];
 
-export const uiAtom = atom<IUi>({
-  key: 'ui',
-  default: initialValue,
+export const postsAtom = atom<IPosts>({
+  key: 'posts',
+  default: initialState,
   // effects_UNSTABLE: [persistAtom],
 });

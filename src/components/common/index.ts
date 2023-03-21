@@ -2,3 +2,8 @@ export { default as Toolbar } from './Toolbar/Toolbar';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as Logo } from './Logo/Logo';
 export { default as LeftMenu } from './LeftMenu/LeftMenu';
+export { default as PostCard } from './PostCard/PostCard';
+export { default as UserCardHorizontal } from './UserCardHorizontal/UserCardHorizontal';
+export { default as LikesCounter } from './LikesCounter/LikesCounter';
+export { default as CommentsCounter } from './CommentsCounter/CommentsCounter';
+export { default as Loader } from './Loader/Loader';

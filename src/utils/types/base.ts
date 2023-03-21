@@ -1,18 +1,7 @@
-export type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+import { PostAuthor } from '@api/services/Post';
+import { Timestamp } from 'firebase/firestore';
 
-// export interface User {
-//   id: number;
-//   fullname: string;
-//   first_name: string;
-//   last_name: string;
-//   username?: string;
-//   email: string;
-//   address?: Address;
-//   phone?: string;
-//   website?: string;
-//   company?: Company;
-//   avatar?: string;
-// }
+export type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 export interface User {
   uid: string;
@@ -22,6 +11,15 @@ export interface User {
   authProvider: string;
   avatar: string;
   fullname: string;
+
+  wallpaper?: string;
+  job_title?: string;
+  website?: string;
+  birthday?: string;
+  address?: string;
+  socials?: Array<{ social_name: string; link: string }>;
+  followers: number;
+  following: number;
 }
 
 export interface Address {
@@ -46,4 +44,17 @@ export interface Company {
 export type ApiError = {
   message: string;
   code?: number;
+};
+
+export type Post = {
+  uid: string;
+  content: string;
+  author: PostAuthor;
+  is_commented: boolean;
+  comments_count: number;
+  is_liked: boolean;
+  likes: number;
+  created_at: Timestamp;
+  updated_at: Timestamp;
+  attachments: Array<{ url: string }>;
 };

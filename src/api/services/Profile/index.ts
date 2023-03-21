@@ -1,1 +1,3 @@
-export { default } from './useProfileService';
+import { useProfileService } from './useProfileService';
+
+export default useProfileService;

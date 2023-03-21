@@ -12,5 +12,5 @@ const initialState: IAuth = {
 export const authAtom = atom<IAuth>({
   key: 'auth',
   default: initialState,
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });

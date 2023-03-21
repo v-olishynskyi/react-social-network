@@ -4,25 +4,8 @@
   height: 100%;
   background-color: var(--secondary-bg);
 
-  .fast-post-wrapper {
-    padding: 1.5rem;
-    background-color: var(--primary-bg);
-    border-radius: 1.5rem;
-    margin-bottom: 1.5rem;
+  .post-card-container {
+    margin-bottom: 1rem;
     max-width: 500px;
-
-    .input-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .buttons-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
 }

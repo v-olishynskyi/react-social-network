@@ -1,22 +1,4 @@
-.overlay-menu-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  .menu-button {
-    margin-bottom: 1rem;
-  }
-}
-
-.avatar-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  .avatar {
-    margin-right: 1rem;
-  }
-
-  .chevron {
-    color: var(--primary-text);
-  }
+.avatar {
+  background-color: var(--left-menu-active);
+  color: var(--white);
 }

@@ -7,5 +7,5 @@ const { persistAtom } = recoilPersist();
 export const usersAtom = atom<User[]>({
   key: 'users',
   default: [],
-  effects_UNSTABLE: [persistAtom],
+  // effects_UNSTABLE: [persistAtom],
 });

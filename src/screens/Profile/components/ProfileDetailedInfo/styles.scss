@@ -1,0 +1,13 @@
+.profile-details-list {
+  li {
+    display: flex;
+    font-weight: 500;
+    text-decoration: none;
+    flex-direction: row;
+    align-items: center;
+
+    .icon {
+      margin-right: 0.75rem;
+    }
+  }
+}

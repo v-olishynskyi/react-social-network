@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { addDoc, collection } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { User } from '@utils/types';
 import useUsersService from '@api/services/Users';
 
@@ -59,9 +59,12 @@ const useAuthService = () => {
           authProvider: 'email',
           avatar: '',
           fullname: `${first_name} ${last_name}`,
+          followers: 0,
+          following: 0,
+          socials: [],
         };
 
-        await addDoc(collection(firebaseDB, 'users'), data);
+        await setDoc(doc(firebaseDB, 'users', user.uid), data);
 
         return Promise.resolve(true);
       } catch (error) {
