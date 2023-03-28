@@ -73,7 +73,7 @@ const useRouter = () => {
           ],
         },
         {
-          path: '/profile/:id',
+          path: '/profile/:id?',
           element: <Profile />,
         },
       ],

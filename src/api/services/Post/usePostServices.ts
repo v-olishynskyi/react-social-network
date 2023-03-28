@@ -3,6 +3,7 @@ import { firebaseDB } from '@services';
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -52,6 +53,14 @@ export const usePostService = () => {
         });
 
         queryClient.refetchQueries(['posts']);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    },
+    deletePost: async (uid: string) => {
+      try {
+        await deleteDoc(doc(firebaseDB, 'posts', uid));
+        return Promise.resolve();
       } catch (error) {
         return Promise.reject(error);
       }

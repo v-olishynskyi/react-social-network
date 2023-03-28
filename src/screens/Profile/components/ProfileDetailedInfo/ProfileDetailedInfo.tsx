@@ -1,13 +1,9 @@
 import React from 'react';
 import { ProfileDetailedInfoProps } from './types';
 import './styles.scss';
-import { useRecoilValue } from 'recoil';
-import { userSelector } from '@store/auth';
 import { CakeIcon, GlobeIcon, MapMarkerIcon } from '@assets/svg';
 
-const ProfileDetailedInfo: React.FC<ProfileDetailedInfoProps> = () => {
-  const user = useRecoilValue(userSelector);
-
+const ProfileDetailedInfo: React.FC<ProfileDetailedInfoProps> = ({ user }) => {
   return (
     <ul className='profile-details-list'>
       {user?.website && (

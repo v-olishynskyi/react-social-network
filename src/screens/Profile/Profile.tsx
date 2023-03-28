@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import authAtom, { userSelector } from '@store/auth';
 import { Button } from 'primereact/button';
 import { ProfileDetailedInfo } from './components';
-import { Card, Loader } from '@components';
+import { Avatar, Card, Loader } from '@components';
 import { UploadCloudIcon } from '@assets/svg';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { firebaseDB, firebaseStorage } from '@services';
@@ -13,23 +13,31 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { useToastContext } from '@context';
 import { User } from '@utils/types';
 import { useParams } from 'react-router-dom';
+import { Image } from 'primereact/image';
+import { useUser } from '@api/hooks/users';
 
 const Profile: React.FC<ProfileProps> = () => {
-  const params = useParams();
+  const params = useParams() as { id?: string };
 
   const { showToast } = useToastContext();
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const [isLoadAvatar, setIsLoadAvatar] = React.useState(false);
 
   const [authState, setAuthState] = useRecoilState(authAtom);
 
-  const user = useRecoilValue(userSelector);
+  const currentUser = useRecoilValue(userSelector);
+
+  const userUid = params.id || currentUser?.uid;
 
   const isMe = React.useMemo(
-    () => user?.uid === params.id,
-    [params.id, user?.uid]
+    () => currentUser?.uid === params.id,
+    [params.id, currentUser?.uid]
   );
+
+  const { data: user, isLoading } = useUser(userUid || '', {
+    enabled: !!userUid,
+  });
 
   const handleOpenPicker = () => {
     inputRef.current?.click();
@@ -68,7 +76,9 @@ const Profile: React.FC<ProfileProps> = () => {
 
   return (
     <>
-      {user ? (
+      {isLoading ? (
+        <Loader />
+      ) : user ? (
         <div className='profile-wrapper'>
           <div className='base-info'>
             <img
@@ -84,7 +94,7 @@ const Profile: React.FC<ProfileProps> = () => {
                 <Loader />
               ) : (
                 <>
-                  <img src={user.avatar} alt='avatar' />
+                  <Image src={user.avatar} alt='avatar' preview />
                   {isMe && (
                     <div className='upload-icon' onClick={handleOpenPicker}>
                       <UploadCloudIcon />
@@ -95,8 +105,8 @@ const Profile: React.FC<ProfileProps> = () => {
             </div>
             <div className='name-block'>
               <div>
-                <h2 className='user-name'>{authState.user?.fullname}</h2>
-                <p className='job-title'>UI Designer</p>
+                <h2 className='user-name'>{user.fullname}</h2>
+                <p className='job-title'>{user.job_title}</p>
               </div>
               <Button>Edit basic info</Button>
             </div>
@@ -104,7 +114,7 @@ const Profile: React.FC<ProfileProps> = () => {
           <Card classes='detailed-info' withPaddings>
             <Card classes='intro' withPaddings>
               <h3>Intro</h3>
-              <ProfileDetailedInfo />
+              <ProfileDetailedInfo user={user} />
             </Card>
           </Card>
         </div>

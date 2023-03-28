@@ -11,7 +11,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   return (
     <div
       {...props}
-      className={`base-card ${withPaddings ? 'p-7' : ''} ${classes}`}>
+      className={`base-card ${withPaddings ? 'p-6' : ''} ${classes}`}>
       {children}
     </div>
   );

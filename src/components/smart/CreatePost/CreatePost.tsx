@@ -104,6 +104,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         label='Публікація'
         icon='pi pi-check'
         onClick={handleSubmitPost}
+        disabled={!content && !attachments.length}
       />
     </div>
   );
@@ -149,7 +150,13 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         draggable={false}
         blockScroll>
         <div className='input-wrapper'>
-          {user && <UserCardHorizontal user={user!} classes='my-4' />}
+          {user && (
+            <UserCardHorizontal
+              user={user!}
+              classes='my-4'
+              shouldRedirect={false}
+            />
+          )}
           <InputTextarea
             placeholder={`Що у вас нового, ${user?.first_name}`}
             className={'w-full rounded-2xl post-text-area'}
@@ -165,7 +172,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
           {!!attachments.length && (
             <div className='flex'>
               {attachments.map(item => (
-                <img src={item.url} className='attached-image' />
+                <img src={item.url} className='attached-image' alt={item.url} />
               ))}
             </div>
           )}

@@ -1,2 +1,19 @@
 .post-card {
+  position: relative;
+
+  .p-speeddial-button {
+    width: 24px;
+    height: 24px;
+  }
+
+  .attached-image {
+    border-radius: 0.75rem;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.confirmation-popup-content {
+  padding-top: 1rem;
 }

@@ -18,7 +18,7 @@ const UserAvatar: React.FC = () => {
   const overlayPanelRef = React.useRef<OverlayPanel>(null);
 
   const goToProfile = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    navigate(`/profile/${user?.uid}`);
+    navigate(`/profile`);
     closeMenu(e);
   };
   const closeMenu = (e: React.MouseEvent<HTMLElement, MouseEvent>) =>

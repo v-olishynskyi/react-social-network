@@ -5,4 +5,5 @@ export type UserCardHorizontalProps = {
   subtitle?: string;
   rightButton?: React.ReactNode;
   classes?: string;
+  shouldRedirect?: boolean;
 };
