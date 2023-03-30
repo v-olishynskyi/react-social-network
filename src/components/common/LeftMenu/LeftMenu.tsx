@@ -8,22 +8,22 @@ const routes = [
   {
     icon: 'pi-th-large',
     route: '/feeds',
-    label: 'Feeds',
+    label: 'Стрічка',
   },
   {
     icon: 'pi-github',
     route: '/community',
-    label: 'My community',
+    label: 'Мої спільноти',
   },
   {
     icon: 'pi-inbox',
     route: '/messages',
-    label: 'Messages',
+    label: 'Повідомлення',
   },
   {
     icon: 'pi-cog',
     route: '/settings',
-    label: 'Settings',
+    label: 'Налаштування',
   },
 ];
 

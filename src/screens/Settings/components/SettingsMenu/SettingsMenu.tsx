@@ -31,7 +31,7 @@ const routes = [
   },
   {
     icon: <SecurityIcon />,
-    label: 'Password & Security',
+    label: 'Пароль та безпека',
     route: '/settings/security',
   },
   {
@@ -46,7 +46,7 @@ const routes = [
   },
   {
     icon: <LightIcon />,
-    label: 'Theme',
+    label: 'Тема',
     route: '/settings/theme',
   },
 ];

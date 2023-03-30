@@ -59,38 +59,38 @@ const PostCard: React.FC<PostCardProps> = ({ item }) => {
 
   const overlayMenu = <Menu model={items} popup ref={menuRef} />;
 
+  const rightButton = (
+    <>
+      <Button
+        icon='pi pi-ellipsis-h'
+        rounded
+        text
+        aria-label='Open menu'
+        onClick={openMenu}
+      />
+      {overlayMenu}
+      <ConfirmDialog
+        visible={visibleDeleteConfirmPopup}
+        onHide={closeDeleteConfirmPopup}
+        message='Ви впевнені, що хочете видалити даний допис?'
+        accept={handleDeletePost}
+        reject={closeDeleteConfirmPopup}
+        icon='pi pi-exclamation-triangle'
+        header='Підтвердження'
+        contentClassName='confirmation-popup-content'
+        acceptLabel='Так'
+        rejectLabel='Відміна'
+      />
+    </>
+  );
+
   return (
     <Card withPaddings classes='post-card'>
       {user && (
         <UserCardHorizontal
           user={item.author}
           subtitle={postDate}
-          rightButton={
-            isMyselfPost && (
-              <>
-                <Button
-                  icon='pi pi-ellipsis-h'
-                  rounded
-                  text
-                  aria-label='Open menu'
-                  onClick={openMenu}
-                />
-                {overlayMenu}
-                <ConfirmDialog
-                  visible={visibleDeleteConfirmPopup}
-                  onHide={closeDeleteConfirmPopup}
-                  message='Ви впевнені, що хочете видалити даний допис?'
-                  accept={handleDeletePost}
-                  reject={closeDeleteConfirmPopup}
-                  icon='pi pi-exclamation-triangle'
-                  header='Підтвердження'
-                  contentClassName='confirmation-popup-content'
-                  acceptLabel='Так'
-                  rejectLabel='Відміна'
-                />
-              </>
-            )
-          }
+          rightButton={isMyselfPost && rightButton}
         />
       )}
       <div className='my-4'>{item.content}</div>
@@ -106,7 +106,7 @@ const PostCard: React.FC<PostCardProps> = ({ item }) => {
           ))}
         </div>
       )}
-      <div className='flex flex-row items-center '>
+      <div className='flex flex-row items-center mt-4'>
         <LikesCounter
           classes='mr-4'
           isLiked={item.is_liked}
