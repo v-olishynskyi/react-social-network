@@ -1,0 +1,28 @@
+.messages {
+  background-color: var(--secondary-bg);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .chats-list {
+    width: 33%;
+    max-height: 91vh;
+    overflow-y: scroll;
+
+    .chat-card {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      padding: 1rem 0.75rem;
+      border-radius: 0.75rem;
+
+      &.active {
+        background-color: var(--secondary-bg);
+      }
+    }
+  }
+
+  .chat-wrapper {
+    width: 64%;
+  }
+}

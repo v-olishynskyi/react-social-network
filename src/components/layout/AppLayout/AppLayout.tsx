@@ -15,15 +15,15 @@ const AppLayout: React.FC = () => {
   return (
     <>
       <Toolbar />
-      <div
+      <main
         className={`app-layout flex ${
           isExtraLargeDisplay ? 'justify-center' : 'justify-between'
         }`}>
         {!isTablet && <LeftMenu />}
-        <main className='main-content'>
+        <div className='main-content'>
           <Outlet />
-        </main>
-      </div>
+        </div>
+      </main>
     </>
   );
 };

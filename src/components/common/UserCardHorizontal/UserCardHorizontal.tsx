@@ -17,18 +17,27 @@ const UserCardHorizontal: React.FC<UserCardHorizontalProps> = ({
   const onClickAvatar = () =>
     shouldRedirect && navigate(`/profile/${user.uid}`);
 
+  const [width, setWidth] = React.useState(0);
+
+  const divRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (divRef) {
+      setWidth(divRef.current?.clientWidth || 0);
+    }
+  }, [divRef]);
+
   return (
     <div className={`user-card-horizontal ${classes}`}>
       <div className='flex flex-row align-center'>
-        <div onClick={onClickAvatar}>
-          <Avatar
-            user={user as User}
-            size='large'
-            className='card-avatar mr-4'
-          />
-        </div>
-        <div>
-          <p className='user-fullname'>{user?.fullname}</p>
+        <Avatar
+          user={user as User}
+          size='large'
+          className='card-avatar mr-4'
+          onClick={onClickAvatar}
+        />
+        <div ref={divRef} style={{ flex: 1 }}>
+          <span className='user-fullname'>{user?.fullname}</span>
           {subtitle && <p className='subtitle'>{subtitle}</p>}
         </div>
       </div>

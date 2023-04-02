@@ -33,27 +33,25 @@ const Toolbar: React.FC = () => {
   );
 
   return (
-    <>
-      <div className='navbar-wrapper'>
-        <div className='flex flex-row items-center'>
-          <div style={{ marginRight: isDesktop ? 40 : 24 }}>
-            <Logo />
-          </div>
-          <span className='p-input-icon-left'>
-            <i className='pi pi-search' />
-            <InputText
-              placeholder='Search'
-              className='search-bar'
-              style={{
-                backgroundColor: colors.primaryBg,
-                color: colors.primaryText,
-              }}
-            />
-          </span>
+    <header className='navbar-wrapper'>
+      <div className='flex flex-row items-center'>
+        <div style={{ marginRight: isDesktop ? 40 : 24 }}>
+          <Logo />
         </div>
-        {avatarSection}
+        <span className='p-input-icon-left'>
+          <i className='pi pi-search' />
+          <InputText
+            placeholder='Search'
+            className='search-bar'
+            style={{
+              backgroundColor: colors.primaryBg,
+              color: colors.primaryText,
+            }}
+          />
+        </span>
       </div>
-    </>
+      {avatarSection}
+    </header>
   );
 };
 

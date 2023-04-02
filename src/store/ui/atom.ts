@@ -11,5 +11,5 @@ const initialValue: IUi = {
 export const uiAtom = atom<IUi>({
   key: 'ui',
   default: initialValue,
-  // effects_UNSTABLE: [persistAtom],
+  effects_UNSTABLE: [persistAtom],
 });

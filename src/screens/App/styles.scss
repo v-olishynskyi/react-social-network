@@ -1,5 +1,27 @@
 .app {
   background-color: var(--primary-bg);
-
   color: var(--primary-text);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-text);
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

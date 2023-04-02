@@ -1,0 +1,18 @@
+.chat {
+  .messages-list {
+    height: 77vh;
+    overflow-y: scroll;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  &__message {
+    width: 80%;
+  }
+}

@@ -3,5 +3,5 @@ export * from './App';
 export * from './Profile';
 export * from './Feeds';
 export * from './Community';
-export * from './Messages';
+export * from './Chats';
 export * from './Settings';

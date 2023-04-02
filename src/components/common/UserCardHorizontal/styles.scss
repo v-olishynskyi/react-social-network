@@ -5,8 +5,13 @@
   justify-content: space-between;
 
   .user-fullname {
+    display: block;
     font-size: 1rem;
     font-weight: 500;
+
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
   }
 
   .subtitle {
@@ -16,5 +21,6 @@
 
   .card-avatar {
     cursor: pointer;
+    width: 48px;
   }
 }

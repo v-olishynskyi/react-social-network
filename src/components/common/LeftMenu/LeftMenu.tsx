@@ -17,7 +17,7 @@ const routes = [
   },
   {
     icon: 'pi-inbox',
-    route: '/messages',
+    route: '/chats',
     label: 'Повідомлення',
   },
   {
@@ -33,20 +33,22 @@ const LeftMenu: React.FC<LeftMenuProps> = () => {
 
   return (
     <aside className='left-menu-wrapper'>
-      {routes.map(route => {
-        const isActive = location.pathname.includes(route.route);
+      <ul className='menu'>
+        {routes.map(route => {
+          const isActive = location.pathname.includes(route.route);
 
-        const onPressRoute = () => navigate(route.route);
+          const onPressRoute = () => navigate(route.route);
 
-        return (
-          <LeftMenuItem
-            key={route.route}
-            isActive={isActive}
-            route={route}
-            onPress={onPressRoute}
-          />
-        );
-      })}
+          return (
+            <LeftMenuItem
+              key={route.route}
+              isActive={isActive}
+              route={route}
+              onPress={onPressRoute}
+            />
+          );
+        })}
+      </ul>
     </aside>
   );
 };

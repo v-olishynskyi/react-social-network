@@ -9,6 +9,8 @@ export const colors = {
     primaryBlue: '#377DFE',
     gray: '#DCDFE4',
     leftMenuActive: '#4D5D78',
+    divider: '#4D5D78',
+    border: '#949EAD',
   },
   light: {
     white: '#FFFFFF',
@@ -20,5 +22,11 @@ export const colors = {
     primaryBlue: '#377DFE',
     gray: '#DCDFE4',
     leftMenuActive: '#4D5D78',
+    divider: '#DBDFE3',
+    border: '#B8BEC9',
   },
+};
+
+export const spacing = {
+  headerHeight: 100,
 };

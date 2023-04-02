@@ -3,12 +3,13 @@ import {
   Community,
   Feeds,
   Login,
-  Messages,
+  Chats,
   PasswordSecurity,
   Profile,
   Registration,
   Settings,
   ThemeSettings,
+  Chat,
 } from '@screens';
 import { isAuthenticatedSelector } from '@store/auth';
 import { createBrowserRouter, Navigate, useLocation } from 'react-router-dom';
@@ -57,8 +58,14 @@ const useRouter = () => {
           element: <Community />,
         },
         {
-          path: '/messages',
-          element: <Messages />,
+          path: '/chats',
+          element: <Chats />,
+          children: [
+            {
+              path: ':id?',
+              element: <Chat />,
+            },
+          ],
         },
         {
           path: '/settings',

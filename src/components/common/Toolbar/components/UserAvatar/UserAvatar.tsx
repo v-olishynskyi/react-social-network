@@ -35,7 +35,7 @@ const UserAvatar: React.FC = () => {
   return !user ? null : (
     <>
       <div className='user-avatar-container' onClick={onClick}>
-        <Avatar user={user} />
+        <Avatar user={user} size='large' />
         <i className='pi pi-chevron-down chevron' />
       </div>
       <OverlayPanel ref={overlayPanelRef}>

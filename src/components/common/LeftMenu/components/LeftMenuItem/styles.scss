@@ -1,8 +1,8 @@
 .left-menu-item {
-  padding: 16px 0;
-  padding-left: 16px;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 0 1.5rem;
+  margin-bottom: 0.5rem;
   cursor: pointer;
 
   color: var(--primary-text);
@@ -10,7 +10,7 @@
   font-weight: 500;
 
   .menu-icon {
-    margin-right: 8px;
+    margin-right: 0.5rem;
   }
 
   &.active {

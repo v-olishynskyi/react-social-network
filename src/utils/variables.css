@@ -8,6 +8,8 @@
   --primary-blue: rgb(55, 125, 254);
   --gray: rgb(220, 223, 228);
   --left-menu-active: rgb(77, 93, 120);
+  --divider: rgb(219, 223, 227);
+  --border: rgb(184, 190, 201);
 }
 
 .dark-theme {
@@ -20,4 +22,10 @@
   --primary-blue: rgb(55, 125, 254);
   --gray: rgb(220, 223, 228);
   --left-menu-active: rgb(77, 93, 120);
+  --divider: rgb(77, 93, 120);
+  --border: rgb(148, 158, 173);
+}
+
+:root {
+  --header-height: 70px;
 }

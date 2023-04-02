@@ -86,7 +86,7 @@ const CreatePost: React.FC<CreatePostProps> = () => {
   };
 
   const footerContent = (
-    <div className='flex justify-between pt-4'>
+    <div className='flex justify-between pt-4 create-post-modal__footer'>
       <div className='flex'>
         <Button
           text
@@ -142,9 +142,18 @@ const CreatePost: React.FC<CreatePostProps> = () => {
         </div>
       </Card>
       <Dialog
+        className='create-post-modal'
         header='Створити допис'
         visible={isShowModal}
         style={{ width: '50vw' }}
+        headerStyle={{
+          backgroundColor: colors.primaryBg,
+          color: colors.primaryText,
+        }}
+        contentStyle={{
+          backgroundColor: colors.primaryBg,
+          color: colors.primaryText,
+        }}
         onHide={hideModal}
         footer={footerContent}
         draggable={false}
